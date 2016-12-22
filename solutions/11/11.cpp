@@ -6,7 +6,7 @@ using namespace std;
 
 void inputting_array(ifstream& , int array[][20]);
 
-int right_check(int array[][20], int);
+int right_check(int array[][20], int, int);
 int left_check(int array[][20], int i, int j);
 int up_check(int array[][20], int i, int j);
 int down_check(int array[][20], int i, int j);
@@ -34,6 +34,13 @@ int main(){
 	
 	//now we must determine what produces the largest number on the array.
 	
+	for (int x = 0; x < 20; x++){
+		for (int y = 0; y < 20; y++){
+			cout << array[x][y] << " "; 
+		}
+		cout << endl;
+	}
+	
 	//these variables hold the value of the adjactent multiples in every direction.
 	int right, left, up, down;
 	int diagonal_up_right, diagonal_up_left, diagonal_down_left, diagonal_down_right;
@@ -41,14 +48,14 @@ int main(){
 	for (int i = 0; i < 20; i++){
 		for (int j = 0; j < 20; j++){
 			//computing the multiple for each direction
-			right = right_check(array[i][j], i, j);
-			left = left_check(array[i][j], i, j);
-			up = up_check(array[i][j], i, j);
-			down = down_check(array[i][j], i, j);
-			diagonal_up_left = diagonal_up_left_check(array[i][j], i, j);
-			diagonal_up_right = diagonal_up_right_check(array[i][j], i, j);
-			diagonal_down_left = diagonal_down_left_check(array[i][j], i, j);
-			diagonal_down_right = diagonal_down_right_check(array[i][j], i, j);
+			right = right_check(array, i, j);
+			left = left_check(array, i, j);
+			up = up_check(array, i, j);
+			down = down_check(array, i, j);
+			diagonal_up_left = diagonal_up_left_check(array, i, j);
+			diagonal_up_right = diagonal_up_right_check(array, i, j);
+			diagonal_down_left = diagonal_down_left_check(array, i, j);
+			diagonal_down_right = diagonal_down_right_check(array, i, j);
 			
 			//now we must check if any of these values is greater than largest num
 			
@@ -189,6 +196,9 @@ int diagonal_down_left_check(int array[][20], int i, int j){
 	int diagonal_down_left;
 	
 	if ((i == 19)||(i == 18)||(i == 17)|| ( j == 0) || (j == 1) || (j == 2)){
+		diagonal_down_left = 0;
+	}
+	else {
 		diagonal_down_left = array[i][j]*array[i+1][j-1]*array[i+2][j-2]*array[i+3][j-3];
 	}
 	
