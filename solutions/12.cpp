@@ -6,7 +6,6 @@ using namespace std;
 int count_divisors(int);
 int triangular_sum(int);
 
-const int limit = 500;
 
 int main(){
 	
@@ -28,9 +27,13 @@ int main(){
 		if (factors > 500){
 			cout << "The first triangular number to have over 500 divisors is " << triangular_sum_num;
 			sentinel = true;
+			break;
+			
 		}
 		counter++;
 	}
+	
+
 	
 	
 	return 0;
@@ -39,7 +42,7 @@ int main(){
 //count the number of divisors of a number.
 int count_divisors(int k){
 	
-	int divisors;
+	int divisors = 0;
 	
 	if (k == 1){
 		return 1;
